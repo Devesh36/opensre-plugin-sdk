@@ -24,11 +24,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Tracer-Cloud/opensre-plugin-sdk"
-Documentation = "https://github.com/Tracer-Cloud/opensre-plugin-sdk#readme"
-Repository = "https://github.com/Tracer-Cloud/opensre-plugin-sdk"
-Issues = "https://github.com/Tracer-Cloud/opensre-plugin-sdk/issues"
-Changelog = "https://github.com/Tracer-Cloud/opensre-plugin-sdk/releases"
+Homepage = "https://github.com/Devesh36/opensre-plugin-sdk"
+Documentation = "https://github.com/Devesh36/opensre-plugin-sdk#readme"
+Repository = "https://github.com/Devesh36/opensre-plugin-sdk"
+Issues = "https://github.com/Devesh36/opensre-plugin-sdk/issues"
+Changelog = "https://github.com/Devesh36/opensre-plugin-sdk/releases"
 
 [project.optional-dependencies]
 opensre = ["opensre>=0.1"]

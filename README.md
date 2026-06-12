@@ -1,13 +1,44 @@
 # opensre-plugin-sdk
 
+[![ci](https://github.com/Devesh36/opensre-plugin-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/Devesh36/opensre-plugin-sdk/actions/workflows/ci.yml)
+
 SDK for building external [OpenSRE](https://github.com/Tracer-Cloud/opensre) investigation tool plugins without modifying the core repository.
 
 OpenSRE's `CONTRIBUTING.md` states that *"Most feature ideas are better shipped as third-party plugins via the plugin SDK"* — this package implements that path.
 
-## Quick start
+## Install
+
+**From GitHub** (recommended until PyPI is published):
+
+```bash
+pip install "opensre-plugin-sdk @ git+https://github.com/Devesh36/opensre-plugin-sdk.git@v0.1.0"
+```
+
+Editable local install for development:
+
+```bash
+git clone https://github.com/Devesh36/opensre-plugin-sdk.git
+cd opensre-plugin-sdk
+pip install -e ".[dev]"
+```
+
+**From PyPI** (after `v0.1.0` is published):
 
 ```bash
 pip install opensre-plugin-sdk
+```
+
+With OpenSRE integration helpers:
+
+```bash
+pip install "opensre-plugin-sdk[opensre] @ git+https://github.com/Devesh36/opensre-plugin-sdk.git@v0.1.0"
+pip install opensre
+```
+
+## Quick start
+
+```bash
+pip install "opensre-plugin-sdk @ git+https://github.com/Devesh36/opensre-plugin-sdk.git@v0.1.0"
 
 # Scaffold a new plugin
 opensre-plugin init linear
@@ -112,4 +143,3 @@ See [`docs/upstream-pr/`](docs/upstream-pr/) for a docs-only PR template (`plugi
 ## License
 
 Apache-2.0
-# opensre-plugin-sdk
