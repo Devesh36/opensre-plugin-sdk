@@ -1,0 +1,49 @@
+"""Example {{ class_prefix }} search tool."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from opensre_plugin.decorators import plugin_tool
+
+from {{ plugin_name }}.config import get_api_key
+
+
+def _available(sources: dict[str, dict]) -> bool:
+    _ = sources
+    return bool(get_api_key())
+
+
+def _extract_params(sources: dict[str, dict]) -> dict[str, Any]:
+    _ = sources
+    return {"api_key": get_api_key()}
+
+
+@plugin_tool(
+    name="search_{{ tool_name }}",
+    source="github",
+    description="Search {{ class_prefix }} records by query string for incident correlation",
+    input_schema={
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Search query",
+            },
+        },
+        "required": ["query"],
+    },
+    is_available=_available,
+    extract_params=_extract_params,
+    injected_params=("api_key",),
+    requires=["api_key"],
+    use_cases=[
+        "Find related records when investigating production errors",
+        "Correlate alerts with known {{ class_prefix }} entries",
+    ],
+)
+def {{ tool_name }}(query: str, api_key: str) -> dict[str, Any]:
+    from {{ plugin_name }}.client import {{ class_prefix }}Client
+
+    client = {{ class_prefix }}Client(api_key=api_key)
+    return client.search(query=query)

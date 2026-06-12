@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "type": ["object", "null"],
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["credentials"]
+}

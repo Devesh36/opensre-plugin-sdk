@@ -1,0 +1,1 @@
+"""OpenSRE plugin SDK CLI."""

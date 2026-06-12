@@ -1,0 +1,10 @@
+"""Shared pytest fixtures for {{ plugin_name }}."""
+
+from __future__ import annotations
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _clear_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("{{ name | upper }}_API_KEY", raising=False)

@@ -1,0 +1,1 @@
+External investigation tool plugins: use the standalone [opensre-plugin-sdk](https://github.com/Tracer-Cloud/opensre-plugin-sdk) (`opensre-plugin init`, `opensre-plugin validate`). See [docs/plugin-sdk.mdx](docs/plugin-sdk.mdx).

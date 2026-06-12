@@ -1,0 +1,13 @@
+# {{ class_prefix }} OpenSRE Plugin
+
+External investigation tools for {{ class_prefix }}, built with [opensre-plugin-sdk](https://github.com/Tracer-Cloud/opensre-plugin-sdk).
+
+## Quick start
+
+```bash
+pip install -e .
+export {{ name | upper }}_API_KEY=your_key
+opensre-plugin validate .
+python -c "from {{ plugin_name }} import register; register()"
+opensre investigate --alert '...'
+```

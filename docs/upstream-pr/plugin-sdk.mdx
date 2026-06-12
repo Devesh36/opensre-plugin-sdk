@@ -1,0 +1,81 @@
+---
+title: External plugin SDK
+description: Build investigation tools outside the OpenSRE core repo using opensre-plugin-sdk.
+---
+
+# External plugin SDK
+
+OpenSRE supports external investigation tools via `register_external_tool_package()` in
+`app/tools/registry.py`. The **[opensre-plugin-sdk](https://github.com/Tracer-Cloud/opensre-plugin-sdk)**
+packages that extension point with schema validation, scaffolding, and a reference plugin.
+
+> **Phase 1 scope:** tool plugins only — env-based credentials, `is_available` / `extract_params`.
+> Full integration catalog wiring (`opensre onboard`, verify probes) is Phase 2.
+
+## Why external plugins?
+
+Adding integrations to OpenSRE core today touches many files (`_catalog_impl.py`, services,
+docs, tests). External plugins let contributors ship validated tools in separate repos without
+Greptile review on core paths.
+
+## Quick start
+
+```bash
+pip install opensre-plugin-sdk opensre
+
+opensre-plugin init mytool
+cd mytool_plugin
+# implement client.py and tools/*.py
+
+opensre-plugin validate .
+export MYTOOL_API_KEY=...
+python -c "from mytool_plugin import register; register()"
+
+opensre investigate --alert '{"title": "Production incident"}'
+```
+
+## Architecture
+
+```text
+Your plugin (@plugin_tool)
+        ↓
+opensre-plugin-sdk (strict schema validation)
+        ↓
+register_external_tool_package(your_plugin.tools)
+        ↓
+get_registered_tools("investigation") → investigation ReAct loop
+```
+
+## Schema rules
+
+Investigation sends **all** available tool schemas in one LLM invoke. One invalid schema
+breaks the entire call. The SDK enforces strict rules at the plugin boundary:
+
+- Top-level `type: object` with `properties`
+- Single string `type` per node (no `"type": ["object", "null"]`)
+- Arrays must have typed `items`
+- Unsupported keys rejected: `$ref`, `nullable`, `title`, etc.
+
+Run `opensre-plugin validate` before publishing.
+
+## Plugin manifest
+
+In your plugin's `pyproject.toml`:
+
+```toml
+[tool.opensre-plugin]
+name = "linear"
+tools_package = "linear_plugin.tools"
+description = "Linear issue search tools for OpenSRE investigations"
+```
+
+## Reference plugin
+
+See `examples/linear` in the SDK repo — Linear issue search gated on `LINEAR_API_KEY`, no core
+repo changes required.
+
+## Related
+
+- [Investigation tool calling](/investigation-tool-calling) — schema authoring guide
+- [CloudOpsBench external tools](https://github.com/Tracer-Cloud/opensre/blob/main/tests/benchmarks/cloudopsbench/tools/k8s/__init__.py) — in-repo reference
+- [opensre-plugin-sdk on GitHub](https://github.com/Tracer-Cloud/opensre-plugin-sdk)

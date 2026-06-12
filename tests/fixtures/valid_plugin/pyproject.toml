@@ -1,0 +1,8 @@
+[project]
+name = "valid-plugin-fixture"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.opensre-plugin]
+name = "valid-fixture"
+tools_package = "valid_plugin.tools"
