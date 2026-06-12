@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-import importlib
 import threading
 from pathlib import Path
 from types import ModuleType
 
 from opensre_plugin.exceptions import OpensreNotInstalledError, PluginRegistrationError
-from opensre_plugin.manifest import load_manifest
+from opensre_plugin.manifest import import_tools_package, load_manifest
 from opensre_plugin.schema.validator import iter_plugin_tools, validate_all_tools_in_module
 
 _registration_lock = threading.Lock()
@@ -60,7 +59,7 @@ def register_tools(tools_package: ModuleType) -> None:
 def register_from_manifest(manifest_path: Path | None = None) -> None:
     """Load ``[tool.opensre-plugin]`` from ``pyproject.toml`` and register tools."""
     manifest = load_manifest(manifest_path)
-    tools_package = importlib.import_module(manifest.tools_package)
+    tools_package = import_tools_package(manifest)
     register_tools(tools_package)
 
 

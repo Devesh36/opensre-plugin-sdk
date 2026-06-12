@@ -14,10 +14,12 @@ FIXTURES = Path(__file__).parent / "fixtures"
 
 
 def test_load_valid_manifest() -> None:
-    manifest = load_manifest(FIXTURES / "valid_plugin")
+    fixture_root = FIXTURES / "valid_plugin"
+    manifest = load_manifest(fixture_root)
     assert manifest == PluginManifest(
         name="valid-fixture",
         tools_package="valid_plugin.tools",
+        root_dir=fixture_root.resolve(),
         description="",
     )
 
@@ -46,8 +48,12 @@ def test_invalid_toml(tmp_path: Path) -> None:
         load_manifest(tmp_path)
 
 
-def test_validate_manifest_import_error() -> None:
-    manifest = PluginManifest(name="demo", tools_package="definitely.not.a.real.module")
+def test_validate_manifest_import_error(tmp_path: Path) -> None:
+    manifest = PluginManifest(
+        name="demo",
+        tools_package="definitely.not.a.real.module",
+        root_dir=tmp_path,
+    )
     errors = validate_manifest(manifest)
     assert len(errors) == 1
     assert "not importable" in errors[0]

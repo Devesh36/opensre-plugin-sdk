@@ -7,6 +7,7 @@ import re
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
+from types import ModuleType
 
 from opensre_plugin.exceptions import ManifestError
 
@@ -15,6 +16,7 @@ from opensre_plugin.exceptions import ManifestError
 class PluginManifest:
     name: str
     tools_package: str
+    root_dir: Path
     description: str = ""
 
 
@@ -60,8 +62,24 @@ def load_manifest(path: Path | None = None) -> PluginManifest:
     return PluginManifest(
         name=name.strip(),
         tools_package=tools_package.strip(),
+        root_dir=pyproject_path.parent,
         description=description.strip(),
     )
+
+
+def ensure_plugin_root_on_path(manifest: PluginManifest) -> None:
+    """Insert *manifest.root_dir* on ``sys.path`` so local plugins import without install."""
+    import sys
+
+    root = str(manifest.root_dir.resolve())
+    if root not in sys.path:
+        sys.path.insert(0, root)
+
+
+def import_tools_package(manifest: PluginManifest) -> ModuleType:
+    """Import *manifest.tools_package* after ensuring *root_dir* is on ``sys.path``."""
+    ensure_plugin_root_on_path(manifest)
+    return importlib.import_module(manifest.tools_package)
 
 
 def validate_manifest(manifest: PluginManifest) -> list[str]:
@@ -75,7 +93,7 @@ def validate_manifest(manifest: PluginManifest) -> list[str]:
         )
 
     try:
-        importlib.import_module(manifest.tools_package)
+        import_tools_package(manifest)
     except ImportError as exc:
         errors.append(f"tools_package {manifest.tools_package!r} is not importable: {exc}")
 

@@ -3,18 +3,42 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+from dataclasses import dataclass
 from typing import Any, cast, overload
 
-from opensre_plugin.exceptions import OpensreNotInstalledError
-from opensre_plugin.schema.validator import validate_tool_schema
+from opensre_plugin.schema.validator import REGISTERED_TOOL_ATTR, validate_tool_schema
 
 
-def _opensre_tool() -> Any:
+@dataclass(frozen=True)
+class _OfflineToolStub:
+    """Minimal tool metadata for offline ``opensre-plugin validate`` without OpenSRE."""
+
+    name: str
+    source: str
+    public_input_schema: dict[str, Any] | None
+
+
+def _opensre_tool() -> Any | None:
     try:
         from app.tools.tool_decorator import tool
-    except ImportError as exc:
-        raise OpensreNotInstalledError("the @plugin_tool decorator") from exc
+    except ImportError:
+        return None
     return tool
+
+
+def _attach_offline_stub[F: Callable[..., Any]](
+    func: F,
+    *,
+    name: str,
+    source: str,
+    input_schema: dict[str, Any] | None,
+) -> F:
+    setattr(
+        func,
+        REGISTERED_TOOL_ATTR,
+        _OfflineToolStub(name=name, source=source, public_input_schema=input_schema),
+    )
+    return func
 
 
 @overload
@@ -70,8 +94,17 @@ def plugin_tool[F: Callable[..., Any]](
     """Validate *input_schema* then delegate to OpenSRE's ``@tool`` decorator."""
     validate_tool_schema(input_schema, tool_name=name)
 
-    tool = _opensre_tool()
-    decorator = tool(
+    opensre_tool = _opensre_tool()
+    if opensre_tool is None:
+
+        def offline_wrapper(inner: F) -> F:
+            return _attach_offline_stub(inner, name=name, source=source, input_schema=input_schema)
+
+        if func is None:
+            return offline_wrapper
+        return offline_wrapper(func)
+
+    decorator = opensre_tool(
         name=name,
         source=source,
         description=description,

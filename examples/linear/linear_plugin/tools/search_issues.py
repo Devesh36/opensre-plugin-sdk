@@ -4,9 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from opensre_plugin.decorators import plugin_tool
-
 from linear_plugin.config import get_api_key
+from opensre_plugin.decorators import plugin_tool
 
 
 def _linear_available(sources: dict[str, dict]) -> bool:

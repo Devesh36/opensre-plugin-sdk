@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-import importlib
 from pathlib import Path
 
 import click
 
 from opensre_plugin.exceptions import ManifestError, OpensreNotInstalledError
-from opensre_plugin.manifest import load_manifest, validate_manifest
+from opensre_plugin.manifest import import_tools_package, load_manifest, validate_manifest
 from opensre_plugin.schema.validator import iter_plugin_tools, validate_all_tools_in_module
 
 
@@ -42,7 +41,7 @@ def validate(path: Path) -> None:
     errors.extend(validate_manifest(manifest))
 
     try:
-        tools_module = importlib.import_module(manifest.tools_package)
+        tools_module = import_tools_package(manifest)
     except ImportError as exc:
         errors.append(f"tools_package {manifest.tools_package!r} import failed: {exc}")
         tools_module = None
@@ -107,6 +106,6 @@ def register(path: Path) -> None:
         click.echo(f"ERROR: {exc}", err=True)
         raise SystemExit(1) from exc
 
-    tools_module = importlib.import_module(manifest.tools_package)
+    tools_module = import_tools_package(manifest)
     for name in list_plugin_tool_names(tools_module):
         click.echo(f"Registered: {name}")

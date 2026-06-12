@@ -5,11 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 from click.testing import CliRunner
+from linear_plugin import tools
 
 from opensre_plugin.cli.main import main
 from opensre_plugin.schema.validator import validate_all_tools_in_module
-
-from linear_plugin import tools
 
 
 def test_tool_schemas_pass_strict_validator() -> None:

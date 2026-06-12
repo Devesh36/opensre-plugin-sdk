@@ -14,7 +14,12 @@ from opensre_plugin.loader import (
     register_from_manifest,
     register_tools,
 )
-from opensre_plugin.manifest import PluginManifest, load_manifest, validate_manifest
+from opensre_plugin.manifest import (
+    PluginManifest,
+    import_tools_package,
+    load_manifest,
+    validate_manifest,
+)
 from opensre_plugin.schema.errors import SchemaValidationError
 from opensre_plugin.schema.validator import (
     assert_strict_tool_schema_node,
@@ -31,6 +36,7 @@ __all__ = [
     "assert_strict_tool_schema_node",
     "clear_and_register",
     "list_plugin_tools",
+    "import_tools_package",
     "load_manifest",
     "plugin_tool",
     "register_from_manifest",

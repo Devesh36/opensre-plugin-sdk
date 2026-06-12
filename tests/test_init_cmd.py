@@ -34,3 +34,7 @@ def test_init_generates_expected_tree(tmp_path: Path) -> None:
     assert "MYTOOL_API_KEY" in (plugin_root / "mytool_plugin" / "config.py").read_text(
         encoding="utf-8"
     )
+
+    validate = CliRunner().invoke(main, ["validate", str(plugin_root)])
+    assert validate.exit_code == 0, validate.output
+    assert "search_mytool" in validate.output

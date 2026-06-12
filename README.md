@@ -57,7 +57,7 @@ python -c "from linear_plugin import register; register()"
 opensre investigate --alert '{"title": "Payment API 500 errors"}'
 ```
 
-See [`examples/linear/`](examples/linear/) for a complete reference plugin.
+See [`examples/linear/`](examples/linear/) for a real API integration and [`examples/mock/`](examples/mock/) for an offline demo with no network. Proof transcript: [`docs/DEMO.md`](docs/DEMO.md).
 
 ## Architecture
 
@@ -139,6 +139,10 @@ See [`docs/upstream-pr/`](docs/upstream-pr/) for a docs-only PR template (`plugi
 - [OpenSRE](https://github.com/Tracer-Cloud/opensre)
 - [Investigation tool calling guide](https://github.com/Tracer-Cloud/opensre/blob/main/docs/investigation-tool-calling.md)
 - [CloudOpsBench external tools reference](https://github.com/Tracer-Cloud/opensre/blob/main/tests/benchmarks/cloudopsbench/tools/k8s/__init__.py)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md), and [SECURITY.md](SECURITY.md).
 
 ## License
 

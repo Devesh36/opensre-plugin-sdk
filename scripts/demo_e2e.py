@@ -83,7 +83,7 @@ def main() -> int:
     print("\nDemo complete. To run a full investigation:")
     print("  export LINEAR_API_KEY=lin_api_xxx")
     print('  python -c "from linear_plugin import register; register()"')
-    print("  opensre investigate --alert '{\"title\": \"Payment API 500 errors\"}'")
+    print('  opensre investigate --alert \'{"title": "Payment API 500 errors"}\'')
     return 0
 
 
