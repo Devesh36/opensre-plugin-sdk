@@ -106,7 +106,7 @@ tools_package = "dup_plugin.tools"
     (pkg / "__init__.py").write_text("", encoding="utf-8")
     (tools / "__init__.py").write_text("", encoding="utf-8")
 
-    tool_stub = '''
+    tool_stub = """
 from dataclasses import dataclass
 from typing import Any
 
@@ -129,7 +129,7 @@ def make_tool():
         },
     ))
     return fn
-'''
+"""
     (tools / "one.py").write_text(f"{tool_stub}\none_fn = make_tool()\n", encoding="utf-8")
     (tools / "two.py").write_text(f"{tool_stub}\ntwo_fn = make_tool()\n", encoding="utf-8")
 
