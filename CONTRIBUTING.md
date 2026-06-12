@@ -38,7 +38,7 @@ uv run pytest tests/ -m integration -v   # requires opensre installed
 4. Add `[tool.opensre-plugin]` to `pyproject.toml`
 5. Test with `register_tools()` before shipping
 
-See [investigation tool calling](https://github.com/Tracer-Cloud/opensre/blob/main/docs/investigation-tool-calling.md) for schema rules.
+See [docs/SCHEMA_RULES.md](docs/SCHEMA_RULES.md) and [docs/AUTHORING.md](docs/AUTHORING.md). Upstream reference: [investigation tool calling](https://github.com/Tracer-Cloud/opensre/blob/main/docs/investigation-tool-calling.md).
 
 ## Pull request checklist
 

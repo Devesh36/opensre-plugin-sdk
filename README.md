@@ -59,28 +59,15 @@ opensre investigate --alert '{"title": "Payment API 500 errors"}'
 
 See [`examples/linear/`](examples/linear/) for a real API integration and [`examples/mock/`](examples/mock/) for an offline demo with no network. Proof transcript: [`docs/DEMO.md`](docs/DEMO.md).
 
-## Architecture
+## Documentation
 
-```text
-Your plugin (@plugin_tool tools)
-        ↓
-opensre-plugin-sdk (schema validation + loader)
-        ↓
-opensre.app.tools.registry.register_external_tool_package()
-        ↓
-get_registered_tools("investigation") → investigation ReAct loop
-```
-
-## Schema rules
-
-Investigation sends **all** tool schemas in one LLM request. Invalid schemas break every investigation. The SDK enforces strict rules at the plugin boundary:
-
-- Top-level `type: object` with `properties`
-- Single string `type` per node (no `["object", "null"]` unions)
-- Arrays must have typed `items`
-- Unsupported keys rejected: `title`, `$schema`, `$ref`, `$defs`, `nullable`, etc.
-
-Run `opensre-plugin validate` before shipping.
+| Doc | Topic |
+|-----|-------|
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Plugin → SDK → `register_external_tool_package` |
+| [docs/SCHEMA_RULES.md](docs/SCHEMA_RULES.md) | Strict JSON Schema rules + examples |
+| [docs/AUTHORING.md](docs/AUTHORING.md) | `is_available`, `extract_params`, `injected_params` |
+| [docs/PHASE1_VS_PHASE2.md](docs/PHASE1_VS_PHASE2.md) | What works today vs core changes |
+| [docs/FAQ.md](docs/FAQ.md) | Monorepo vs separate repo, common questions |
 
 ## Plugin manifest
 
@@ -100,12 +87,6 @@ description = "Linear issue search tools for OpenSRE investigations"
 | `opensre-plugin init <name>` | Scaffold a new tool plugin |
 | `opensre-plugin validate [path]` | Offline manifest + schema validation |
 | `opensre-plugin register [path]` | Register tools with OpenSRE (requires `opensre`) |
-
-## Phase 1 vs Phase 2
-
-**Phase 1 (today):** External tool packages, env-based credentials, `is_available` / `extract_params`, schema validation. No core repo changes.
-
-**Phase 2 (future):** Integration catalog wiring, `opensre onboard`, verify probes, entry-point auto-discovery.
 
 ## Development
 
@@ -132,7 +113,7 @@ uv run python scripts/demo_e2e.py
 
 ## Upstream OpenSRE docs PR
 
-See [`docs/upstream-pr/`](docs/upstream-pr/) for a docs-only PR template (`plugin-sdk.mdx`, `docs.json` snippet, CONTRIBUTING link).
+Templates in [`docs/upstream-pr/`](docs/upstream-pr/) are ready — **open the PR after a maintainer says the SDK looks good**, not before.
 
 ## Related
 

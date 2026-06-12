@@ -1,5 +1,7 @@
 # Upstream docs PR for OpenSRE
 
+**Status: ready, not opened.** Use this folder only after an OpenSRE maintainer says the SDK looks good.
+
 Copy these files into [Tracer-Cloud/opensre](https://github.com/Tracer-Cloud/opensre) as a **docs-only PR** linking to the external plugin SDK.
 
 ## Files to add
