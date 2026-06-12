@@ -5,8 +5,8 @@ on:
   pull_request:
 
 env:
-  # Pinned OpenSRE refs for reproducible integration/demo jobs (not floating main).
-  OPENSRE_GIT_REF: v0.1
+  # Pinned refs — not floating main. v2026.6.12+ includes register_external_tool_package.
+  OPENSRE_GIT_REF: v2026.6.12
   OPENSRE_PYPI_VERSION: "2026.4.5"
 
 jobs:
@@ -32,16 +32,9 @@ jobs:
       - name: Unit tests
         run: uv run pytest tests/ -m "not integration" -v
 
-  integration:
+  integration-git:
     needs: unit
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        opensre-source: [git, pypi]
-
-    name: integration (${{ matrix.opensre-source }})
-
     steps:
       - uses: actions/checkout@v4
 
@@ -50,21 +43,54 @@ jobs:
       - name: Install SDK
         run: uv sync --extra dev
 
-      - name: Install OpenSRE from git tag
-        if: matrix.opensre-source == 'git'
+      - name: Install OpenSRE from pinned git tag
         run: >-
           uv pip install
           "opensre @ git+https://github.com/Tracer-Cloud/opensre.git@${{ env.OPENSRE_GIT_REF }}"
 
-      - name: Install OpenSRE from PyPI
-        if: matrix.opensre-source == 'pypi'
-        run: uv pip install "opensre==${{ env.OPENSRE_PYPI_VERSION }}"
-
-      - name: Verify OpenSRE import
-        run: uv run python -c "import app.tools.registry; print('opensre OK')"
+      - name: Verify external plugin API
+        run: >-
+          uv run python -c
+          "from app.tools.registry import register_external_tool_package; print('OK')"
 
       - name: Integration tests
         run: uv run pytest tests/ -m integration -v
 
       - name: End-to-end demo
         run: uv run python scripts/demo_e2e.py
+
+  integration-pypi:
+    needs: unit
+    runs-on: ubuntu-latest
+    # Best-effort: PyPI may lag git; do not block merges if the hook is absent.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install SDK
+        run: uv sync --extra dev
+
+      - name: Install OpenSRE from PyPI
+        run: uv pip install "opensre==${{ env.OPENSRE_PYPI_VERSION }}"
+
+      - name: Verify external plugin API on PyPI release
+        id: pypi_capable
+        run: >-
+          uv run python -c
+          "from app.tools.registry import register_external_tool_package; print('OK')"
+
+      - name: Integration tests (PyPI)
+        if: steps.pypi_capable.outcome == 'success'
+        run: uv run pytest tests/ -m integration -v
+
+      - name: End-to-end demo (PyPI)
+        if: steps.pypi_capable.outcome == 'success'
+        run: uv run python scripts/demo_e2e.py
+
+      - name: Note skipped PyPI integration
+        if: steps.pypi_capable.outcome != 'success'
+        run: >-
+          echo "::notice::PyPI opensre==${{ env.OPENSRE_PYPI_VERSION }} does not expose
+          register_external_tool_package yet; git pin job covers integration."

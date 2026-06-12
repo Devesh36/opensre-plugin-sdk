@@ -2,6 +2,15 @@
 
 Thanks for helping build the external plugin path for [OpenSRE](https://github.com/Tracer-Cloud/opensre).
 
+## CI OpenSRE pins
+
+Integration tests pin OpenSRE (see `.github/workflows/ci.yml`):
+
+- **Git:** `v2026.6.12` (includes `register_external_tool_package`)
+- **PyPI:** `2026.4.5` (best-effort; skipped if the plugin hook is missing)
+
+Bump pins when OpenSRE ships new plugin APIs — do not use floating `main`.
+
 ## Development setup
 
 ```bash
