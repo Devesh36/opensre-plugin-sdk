@@ -64,3 +64,75 @@ setattr(fn, REGISTERED_TOOL_ATTR, Tool(
     result = CliRunner().invoke(main, ["validate", str(plugin_root)])
     assert result.exit_code == 1
     assert "type must not be a list" in result.output
+
+
+def test_validate_fails_for_missing_manifest_table(tmp_path: Path) -> None:
+    plugin_root = tmp_path / "no_manifest"
+    plugin_root.mkdir()
+    (plugin_root / "pyproject.toml").write_text('[project]\nname = "demo"\n', encoding="utf-8")
+
+    result = CliRunner().invoke(main, ["validate", str(plugin_root)])
+    assert result.exit_code == 1
+    assert "Missing [tool.opensre-plugin]" in result.output
+
+
+def test_validate_fails_for_missing_required_name(tmp_path: Path) -> None:
+    plugin_root = tmp_path / "no_name"
+    plugin_root.mkdir()
+    (plugin_root / "pyproject.toml").write_text(
+        '[tool.opensre-plugin]\ntools_package = "pkg.tools"\n',
+        encoding="utf-8",
+    )
+
+    result = CliRunner().invoke(main, ["validate", str(plugin_root)])
+    assert result.exit_code == 1
+    assert "name is required" in result.output
+
+
+def test_validate_fails_for_duplicate_tool_names(tmp_path: Path) -> None:
+    plugin_root = tmp_path / "dup_plugin"
+    plugin_root.mkdir()
+    (plugin_root / "pyproject.toml").write_text(
+        """
+[tool.opensre-plugin]
+name = "dup"
+tools_package = "dup_plugin.tools"
+""".strip(),
+        encoding="utf-8",
+    )
+    pkg = plugin_root / "dup_plugin"
+    tools = pkg / "tools"
+    tools.mkdir(parents=True)
+    (pkg / "__init__.py").write_text("", encoding="utf-8")
+    (tools / "__init__.py").write_text("", encoding="utf-8")
+
+    tool_stub = '''
+from dataclasses import dataclass
+from typing import Any
+
+REGISTERED_TOOL_ATTR = "__opensre_registered_tool__"
+
+@dataclass(frozen=True)
+class Tool:
+    name: str
+    public_input_schema: dict[str, Any]
+
+def make_tool():
+    def fn() -> None:
+        pass
+    setattr(fn, REGISTERED_TOOL_ATTR, Tool(
+        name="same_name",
+        public_input_schema={
+            "type": "object",
+            "properties": {"q": {"type": "string"}},
+            "required": ["q"],
+        },
+    ))
+    return fn
+'''
+    (tools / "one.py").write_text(f"{tool_stub}\none_fn = make_tool()\n", encoding="utf-8")
+    (tools / "two.py").write_text(f"{tool_stub}\ntwo_fn = make_tool()\n", encoding="utf-8")
+
+    result = CliRunner().invoke(main, ["validate", str(plugin_root)])
+    assert result.exit_code == 1
+    assert "duplicate tool name 'same_name'" in result.output

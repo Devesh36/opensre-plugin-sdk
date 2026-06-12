@@ -4,8 +4,13 @@ on:
   push:
   pull_request:
 
+env:
+  # Pinned OpenSRE refs for reproducible integration/demo jobs (not floating main).
+  OPENSRE_GIT_REF: v0.1
+  OPENSRE_PYPI_VERSION: "2026.4.5"
+
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,10 +21,10 @@ jobs:
         run: uv sync --extra dev
 
       - name: Ruff lint
-        run: uv run ruff check src/ tests/
+        run: uv run ruff check src/ tests/ examples/ scripts/
 
       - name: Ruff format
-        run: uv run ruff format --check src/ tests/
+        run: uv run ruff format --check src/ tests/ examples/ scripts/
 
       - name: Mypy
         run: uv run mypy src/
@@ -27,8 +32,39 @@ jobs:
       - name: Unit tests
         run: uv run pytest tests/ -m "not integration" -v
 
-      - name: Install OpenSRE for integration tests
-        run: uv pip install "opensre @ git+https://github.com/Tracer-Cloud/opensre.git"
+  integration:
+    needs: unit
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        opensre-source: [git, pypi]
+
+    name: integration (${{ matrix.opensre-source }})
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install SDK
+        run: uv sync --extra dev
+
+      - name: Install OpenSRE from git tag
+        if: matrix.opensre-source == 'git'
+        run: >-
+          uv pip install
+          "opensre @ git+https://github.com/Tracer-Cloud/opensre.git@${{ env.OPENSRE_GIT_REF }}"
+
+      - name: Install OpenSRE from PyPI
+        if: matrix.opensre-source == 'pypi'
+        run: uv pip install "opensre==${{ env.OPENSRE_PYPI_VERSION }}"
+
+      - name: Verify OpenSRE import
+        run: uv run python -c "import app.tools.registry; print('opensre OK')"
 
       - name: Integration tests
         run: uv run pytest tests/ -m integration -v
+
+      - name: End-to-end demo
+        run: uv run python scripts/demo_e2e.py
