@@ -8,3 +8,4 @@ __pycache__/
 dist/
 build/
 tests/fixtures/integration_plugin/
+scripts/.tool_inventory.json

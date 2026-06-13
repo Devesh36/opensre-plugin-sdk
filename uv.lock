@@ -7,6 +7,65 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 
+[manifest]
+members = [
+    "opensre-plugin-airflow",
+    "opensre-plugin-alertmanager",
+    "opensre-plugin-argocd",
+    "opensre-plugin-aws-sdk",
+    "opensre-plugin-azure",
+    "opensre-plugin-azure-sql",
+    "opensre-plugin-batch",
+    "opensre-plugin-betterstack",
+    "opensre-plugin-bitbucket",
+    "opensre-plugin-clickhouse",
+    "opensre-plugin-cloudwatch",
+    "opensre-plugin-coralogix",
+    "opensre-plugin-dagster",
+    "opensre-plugin-datadog",
+    "opensre-plugin-ec2",
+    "opensre-plugin-eks",
+    "opensre-plugin-elasticsearch",
+    "opensre-plugin-github",
+    "opensre-plugin-gitlab",
+    "opensre-plugin-google-docs",
+    "opensre-plugin-grafana",
+    "opensre-plugin-helm",
+    "opensre-plugin-hermes",
+    "opensre-plugin-honeycomb",
+    "opensre-plugin-incident-io",
+    "opensre-plugin-jenkins",
+    "opensre-plugin-jira",
+    "opensre-plugin-kafka",
+    "opensre-plugin-knowledge",
+    "opensre-plugin-linear",
+    "opensre-plugin-mariadb",
+    "opensre-plugin-mock",
+    "opensre-plugin-mongodb",
+    "opensre-plugin-mongodb-atlas",
+    "opensre-plugin-mysql",
+    "opensre-plugin-openclaw",
+    "opensre-plugin-openobserve",
+    "opensre-plugin-opensearch",
+    "opensre-plugin-opsgenie",
+    "opensre-plugin-postgresql",
+    "opensre-plugin-prefect",
+    "opensre-plugin-rabbitmq",
+    "opensre-plugin-rds",
+    "opensre-plugin-sdk",
+    "opensre-plugin-sentry",
+    "opensre-plugin-signoz",
+    "opensre-plugin-snowflake",
+    "opensre-plugin-splunk",
+    "opensre-plugin-storage",
+    "opensre-plugin-supabase",
+    "opensre-plugin-tracer-web",
+    "opensre-plugin-twilio",
+    "opensre-plugin-vercel",
+    "opensre-plugin-victoria-logs",
+    "opensre-plugins",
+]
+
 [[package]]
 name = "aiohappyeyeballs"
 version = "2.6.2"
@@ -1524,6 +1583,870 @@ wheels = [
 ]
 
 [[package]]
+name = "opensre-plugin-airflow"
+version = "0.1.0"
+source = { editable = "plugins/airflow" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-alertmanager"
+version = "0.1.0"
+source = { editable = "plugins/alertmanager" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-argocd"
+version = "0.1.0"
+source = { editable = "plugins/argocd" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-aws-sdk"
+version = "0.1.0"
+source = { editable = "plugins/aws_sdk" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-azure"
+version = "0.1.0"
+source = { editable = "plugins/azure" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-azure-sql"
+version = "0.1.0"
+source = { editable = "plugins/azure_sql" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-batch"
+version = "0.1.0"
+source = { editable = "plugins/batch" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-betterstack"
+version = "0.1.0"
+source = { editable = "plugins/betterstack" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-bitbucket"
+version = "0.1.0"
+source = { editable = "plugins/bitbucket" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-clickhouse"
+version = "0.1.0"
+source = { editable = "plugins/clickhouse" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-cloudwatch"
+version = "0.1.0"
+source = { editable = "plugins/cloudwatch" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-coralogix"
+version = "0.1.0"
+source = { editable = "plugins/coralogix" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-dagster"
+version = "0.1.0"
+source = { editable = "plugins/dagster" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-datadog"
+version = "0.1.0"
+source = { editable = "plugins/datadog" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-ec2"
+version = "0.1.0"
+source = { editable = "plugins/ec2" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-eks"
+version = "0.1.0"
+source = { editable = "plugins/eks" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-elasticsearch"
+version = "0.1.0"
+source = { editable = "plugins/elasticsearch" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-github"
+version = "0.1.0"
+source = { editable = "plugins/github" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-gitlab"
+version = "0.1.0"
+source = { editable = "plugins/gitlab" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-google-docs"
+version = "0.1.0"
+source = { editable = "plugins/google_docs" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-grafana"
+version = "0.1.0"
+source = { editable = "plugins/grafana" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-helm"
+version = "0.1.0"
+source = { editable = "plugins/helm" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-hermes"
+version = "0.1.0"
+source = { editable = "plugins/hermes" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-honeycomb"
+version = "0.1.0"
+source = { editable = "plugins/honeycomb" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-incident-io"
+version = "0.1.0"
+source = { editable = "plugins/incident_io" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-jenkins"
+version = "0.1.0"
+source = { editable = "plugins/jenkins" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-jira"
+version = "0.1.0"
+source = { editable = "plugins/jira" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-kafka"
+version = "0.1.0"
+source = { editable = "plugins/kafka" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-knowledge"
+version = "0.1.0"
+source = { editable = "plugins/knowledge" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-linear"
+version = "0.1.0"
+source = { editable = "plugins/linear" }
+dependencies = [
+    { name = "httpx" },
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "pytest-httpx" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "httpx", specifier = ">=0.27" },
+    { name = "opensre-plugin-sdk", editable = "." },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
+    { name = "pytest-httpx", marker = "extra == 'dev'", specifier = ">=0.30" },
+]
+provides-extras = ["dev"]
+
+[[package]]
+name = "opensre-plugin-mariadb"
+version = "0.1.0"
+source = { editable = "plugins/mariadb" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-mock"
+version = "0.1.0"
+source = { editable = "plugins/mock" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre-plugin-sdk", editable = "." },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
+]
+provides-extras = ["dev"]
+
+[[package]]
+name = "opensre-plugin-mongodb"
+version = "0.1.0"
+source = { editable = "plugins/mongodb" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-mongodb-atlas"
+version = "0.1.0"
+source = { editable = "plugins/mongodb_atlas" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-mysql"
+version = "0.1.0"
+source = { editable = "plugins/mysql" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-openclaw"
+version = "0.1.0"
+source = { editable = "plugins/openclaw" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-openobserve"
+version = "0.1.0"
+source = { editable = "plugins/openobserve" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-opensearch"
+version = "0.1.0"
+source = { editable = "plugins/opensearch" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-opsgenie"
+version = "0.1.0"
+source = { editable = "plugins/opsgenie" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-postgresql"
+version = "0.1.0"
+source = { editable = "plugins/postgresql" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-prefect"
+version = "0.1.0"
+source = { editable = "plugins/prefect" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-rabbitmq"
+version = "0.1.0"
+source = { editable = "plugins/rabbitmq" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-rds"
+version = "0.1.0"
+source = { editable = "plugins/rds" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
 name = "opensre-plugin-sdk"
 version = "0.1.0"
 source = { editable = "." }
@@ -1542,6 +2465,9 @@ dev = [
 opensre = [
     { name = "opensre" },
 ]
+plugins = [
+    { name = "opensre-plugins", extra = ["all"] },
+]
 
 [package.metadata]
 requires-dist = [
@@ -1549,11 +2475,242 @@ requires-dist = [
     { name = "jinja2", specifier = ">=3" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.8" },
     { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugins", extras = ["all"], marker = "extra == 'plugins'", editable = "plugins/opensre_plugins" },
     { name = "pydantic", specifier = ">=2" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.8" },
 ]
-provides-extras = ["opensre", "dev"]
+provides-extras = ["opensre", "plugins", "dev"]
+
+[[package]]
+name = "opensre-plugin-sentry"
+version = "0.1.0"
+source = { editable = "plugins/sentry" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-signoz"
+version = "0.1.0"
+source = { editable = "plugins/signoz" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-snowflake"
+version = "0.1.0"
+source = { editable = "plugins/snowflake" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-splunk"
+version = "0.1.0"
+source = { editable = "plugins/splunk" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-storage"
+version = "0.1.0"
+source = { editable = "plugins/storage" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-supabase"
+version = "0.1.0"
+source = { editable = "plugins/supabase" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-tracer-web"
+version = "0.1.0"
+source = { editable = "plugins/tracer_web" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-twilio"
+version = "0.1.0"
+source = { editable = "plugins/twilio" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-vercel"
+version = "0.1.0"
+source = { editable = "plugins/vercel" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugin-victoria-logs"
+version = "0.1.0"
+source = { editable = "plugins/victoria_logs" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+opensre = [
+    { name = "opensre" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre", marker = "extra == 'opensre'", specifier = ">=0.1" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["opensre"]
+
+[[package]]
+name = "opensre-plugins"
+version = "0.1.0"
+source = { editable = "plugins/opensre_plugins" }
+dependencies = [
+    { name = "opensre-plugin-sdk" },
+]
+
+[package.optional-dependencies]
+all = [
+    { name = "opensre-plugin-linear" },
+    { name = "opensre-plugin-mock" },
+]
+linear = [
+    { name = "opensre-plugin-linear" },
+]
+mock = [
+    { name = "opensre-plugin-mock" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "opensre-plugin-linear", marker = "extra == 'all'", editable = "plugins/linear" },
+    { name = "opensre-plugin-linear", marker = "extra == 'linear'", editable = "plugins/linear" },
+    { name = "opensre-plugin-mock", marker = "extra == 'all'", editable = "plugins/mock" },
+    { name = "opensre-plugin-mock", marker = "extra == 'mock'", editable = "plugins/mock" },
+    { name = "opensre-plugin-sdk", editable = "." },
+]
+provides-extras = ["linear", "mock", "all"]
 
 [[package]]
 name = "opentelemetry-api"
@@ -2230,6 +3387,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/7d/0d/549bd94f1a0a402dc8cf64563a117c0f3765662e2e668477624baeec44d5/pytest-9.0.3.tar.gz", hash = "sha256:b86ada508af81d19edeb213c681b1d48246c1a91d304c6c81a427674c17eb91c", size = 1572165, upload-time = "2026-04-07T17:16:18.027Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d4/24/a372aaf5c9b7208e7112038812994107bc65a84cd00e0354a88c2c77a617/pytest-9.0.3-py3-none-any.whl", hash = "sha256:2c5efc453d45394fdd706ade797c0a81091eccd1d6e4bccfcd476e2b8e0ab5d9", size = 375249, upload-time = "2026-04-07T17:16:16.13Z" },
+]
+
+[[package]]
+name = "pytest-httpx"
+version = "0.36.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4e/42/f53c58570e80d503ade9dd42ce57f2915d14bcbe25f6308138143950d1d6/pytest_httpx-0.36.2.tar.gz", hash = "sha256:05a56527484f7f4e8c856419ea379b8dc359c36801c4992fdb330f294c690356", size = 57683, upload-time = "2026-04-09T13:57:19.837Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/55/1fa65f8e4fceb19dd6daa867c162ad845d547f6058cd92b4b02384a44777/pytest_httpx-0.36.2-py3-none-any.whl", hash = "sha256:d42ebd5679442dc7bfb0c48e0767b6562e9bc4534d805127b0084171886a5e22", size = 20315, upload-time = "2026-04-09T13:57:18.587Z" },
 ]
 
 [[package]]

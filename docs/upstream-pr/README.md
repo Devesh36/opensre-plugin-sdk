@@ -46,7 +46,7 @@ implemented yet.
   - Loader around register_external_tool_package()
   - CLI: opensre-plugin init / validate
 
-- Demo plugin: examples/linear in the SDK repo
+- Demo plugin: plugins/linear in the SDK repo
   - External tool package, no _catalog_impl.py changes
   - Validated against opensre @ v0.1
 

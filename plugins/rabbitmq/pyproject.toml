@@ -1,0 +1,23 @@
+[project]
+name = "opensre-plugin-rabbitmq"
+version = "0.1.0"
+description = "OpenSRE rabbitmq integration plugin (5 tool(s), bridged from core)"
+requires-python = ">=3.12"
+dependencies = [
+    "opensre-plugin-sdk",
+]
+
+[project.optional-dependencies]
+opensre = ["opensre>=0.1"]
+
+[tool.opensre-plugin]
+name = "rabbitmq"
+tools_package = "rabbitmq_plugin.tools"
+description = "Bridged rabbitmq tools for OpenSRE investigations"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rabbitmq_plugin"]

@@ -21,16 +21,19 @@ jobs:
         run: uv sync --extra dev
 
       - name: Ruff lint
-        run: uv run ruff check src/ tests/ examples/ scripts/
+        run: uv run ruff check src/ tests/ plugins/ scripts/
 
       - name: Ruff format
-        run: uv run ruff format --check src/ tests/ examples/ scripts/
+        run: uv run ruff format --check src/ tests/ plugins/ scripts/
 
       - name: Mypy
         run: uv run mypy src/
 
       - name: Unit tests
         run: uv run pytest tests/ -m "not integration" -v
+
+      - name: Validate all plugins
+        run: uv run python scripts/validate_all_plugins.py
 
   integration-git:
     needs: unit

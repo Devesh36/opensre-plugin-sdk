@@ -32,20 +32,129 @@ Changelog = "https://github.com/Devesh36/opensre-plugin-sdk/releases"
 
 [project.optional-dependencies]
 opensre = ["opensre>=0.1"]
+plugins = ["opensre-plugins[all]"]
 dev = ["pytest>=8", "ruff>=0.8", "mypy>=1.8"]
 
 [project.scripts]
 opensre-plugin = "opensre_plugin.cli.main:main"
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+[tool.uv]
+package = true
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/opensre_plugin"]
+[tool.uv.workspace]
+members = [
+    "plugins/linear",
+    "plugins/mock",
+    "plugins/opensre_plugins",
+    "plugins/airflow",
+    "plugins/alertmanager",
+    "plugins/argocd",
+    "plugins/aws_sdk",
+    "plugins/azure",
+    "plugins/azure_sql",
+    "plugins/batch",
+    "plugins/betterstack",
+    "plugins/bitbucket",
+    "plugins/clickhouse",
+    "plugins/cloudwatch",
+    "plugins/coralogix",
+    "plugins/dagster",
+    "plugins/datadog",
+    "plugins/ec2",
+    "plugins/eks",
+    "plugins/elasticsearch",
+    "plugins/github",
+    "plugins/gitlab",
+    "plugins/google_docs",
+    "plugins/grafana",
+    "plugins/helm",
+    "plugins/hermes",
+    "plugins/honeycomb",
+    "plugins/incident_io",
+    "plugins/jenkins",
+    "plugins/jira",
+    "plugins/kafka",
+    "plugins/knowledge",
+    "plugins/mariadb",
+    "plugins/mongodb",
+    "plugins/mongodb_atlas",
+    "plugins/mysql",
+    "plugins/openclaw",
+    "plugins/openobserve",
+    "plugins/opensearch",
+    "plugins/opsgenie",
+    "plugins/postgresql",
+    "plugins/prefect",
+    "plugins/rabbitmq",
+    "plugins/rds",
+    "plugins/sentry",
+    "plugins/signoz",
+    "plugins/snowflake",
+    "plugins/splunk",
+    "plugins/storage",
+    "plugins/supabase",
+    "plugins/tracer_web",
+    "plugins/twilio",
+    "plugins/vercel",
+    "plugins/victoria_logs"
+]
 
-[tool.hatch.build.targets.wheel.force-include]
-"templates" = "opensre_plugin/templates"
+[tool.uv.sources]
+opensre-plugin-sdk = { workspace = true }
+opensre-plugin-airflow = { workspace = true }
+opensre-plugin-alertmanager = { workspace = true }
+opensre-plugin-argocd = { workspace = true }
+opensre-plugin-aws-sdk = { workspace = true }
+opensre-plugin-azure = { workspace = true }
+opensre-plugin-azure-sql = { workspace = true }
+opensre-plugin-batch = { workspace = true }
+opensre-plugin-betterstack = { workspace = true }
+opensre-plugin-bitbucket = { workspace = true }
+opensre-plugin-clickhouse = { workspace = true }
+opensre-plugin-cloudwatch = { workspace = true }
+opensre-plugin-coralogix = { workspace = true }
+opensre-plugin-dagster = { workspace = true }
+opensre-plugin-datadog = { workspace = true }
+opensre-plugin-ec2 = { workspace = true }
+opensre-plugin-eks = { workspace = true }
+opensre-plugin-elasticsearch = { workspace = true }
+opensre-plugin-github = { workspace = true }
+opensre-plugin-gitlab = { workspace = true }
+opensre-plugin-google-docs = { workspace = true }
+opensre-plugin-grafana = { workspace = true }
+opensre-plugin-helm = { workspace = true }
+opensre-plugin-hermes = { workspace = true }
+opensre-plugin-honeycomb = { workspace = true }
+opensre-plugin-incident-io = { workspace = true }
+opensre-plugin-jenkins = { workspace = true }
+opensre-plugin-jira = { workspace = true }
+opensre-plugin-kafka = { workspace = true }
+opensre-plugin-knowledge = { workspace = true }
+opensre-plugin-linear = { workspace = true }
+opensre-plugin-mariadb = { workspace = true }
+opensre-plugin-mock = { workspace = true }
+opensre-plugin-mongodb = { workspace = true }
+opensre-plugin-mongodb-atlas = { workspace = true }
+opensre-plugin-mysql = { workspace = true }
+opensre-plugin-openclaw = { workspace = true }
+opensre-plugin-openobserve = { workspace = true }
+opensre-plugin-opensearch = { workspace = true }
+opensre-plugin-opsgenie = { workspace = true }
+opensre-plugin-postgresql = { workspace = true }
+opensre-plugin-prefect = { workspace = true }
+opensre-plugin-rabbitmq = { workspace = true }
+opensre-plugin-rds = { workspace = true }
+opensre-plugin-sentry = { workspace = true }
+opensre-plugin-signoz = { workspace = true }
+opensre-plugin-snowflake = { workspace = true }
+opensre-plugin-splunk = { workspace = true }
+opensre-plugin-storage = { workspace = true }
+opensre-plugin-supabase = { workspace = true }
+opensre-plugin-tracer-web = { workspace = true }
+opensre-plugin-twilio = { workspace = true }
+opensre-plugin-vercel = { workspace = true }
+opensre-plugin-victoria-logs = { workspace = true }
+opensre-plugins = { workspace = true }
 
 [tool.pytest.ini_options]
 markers = [
@@ -56,7 +165,7 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-exclude = ["tests/fixtures/integration_plugin"]
+exclude = ["tests/fixtures/integration_plugin", "plugins"]
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "C4", "UP", "ARG", "SIM"]

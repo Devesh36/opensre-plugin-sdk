@@ -10,7 +10,7 @@ uv run python scripts/demo_e2e.py
 ```
 
 ```
-1/4  opensre-plugin validate examples/linear
+1/4  opensre-plugin validate plugins/linear
 OK: plugin 'linear' (1 tool(s))
   - search_linear_issues
 
@@ -32,7 +32,7 @@ Demo complete. To run a full investigation:
 ## Mock plugin (offline, no network)
 
 ```bash
-opensre-plugin validate examples/mock
+opensre-plugin validate plugins/mock
 ```
 
 ```

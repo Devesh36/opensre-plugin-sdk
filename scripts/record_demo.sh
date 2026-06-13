@@ -18,12 +18,12 @@ export MOCK_API_KEY=demo
 echo "=== opensre-plugin-sdk demo ==="
 echo ""
 
-echo "$ opensre-plugin validate examples/mock"
-uv run opensre-plugin validate examples/mock
+echo "$ opensre-plugin validate plugins/mock"
+uv run opensre-plugin validate plugins/mock
 echo ""
 
-echo "$ opensre-plugin validate examples/linear"
-uv run opensre-plugin validate examples/linear
+echo "$ opensre-plugin validate plugins/linear"
+uv run opensre-plugin validate plugins/linear
 echo ""
 
 echo "$ opensre-plugin validate (bad schema — expect failure)"
@@ -57,7 +57,7 @@ uv run python scripts/demo_e2e.py
 echo ""
 
 echo "$ export MOCK_API_KEY=demo && python -c 'from mock_plugin import register; register()'"
-export PYTHONPATH="examples/mock:${PYTHONPATH:-}"
+export PYTHONPATH="plugins/mock:${PYTHONPATH:-}"
 if python -c "import app.tools.registry" 2>/dev/null; then
   python -c "from mock_plugin import register; register(); from app.tools.registry import get_registered_tools; print([t.name for t in get_registered_tools('investigation') if 'mock' in t.name])"
 else

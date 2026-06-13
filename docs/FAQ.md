@@ -54,7 +54,7 @@ register_splunk()
 
 ### This SDK repo
 
-`examples/linear` and `examples/mock` live in the same repo as the SDK — that's a valid monorepo pattern for reference plugins.
+`plugins/linear` and `plugins/mock` live in the same repo as the SDK — that's the bundled integrations monorepo.
 
 ---
 

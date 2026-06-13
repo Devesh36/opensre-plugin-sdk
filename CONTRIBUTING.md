@@ -25,8 +25,8 @@ uv pip install -e ../opensre   # optional, for integration tests
 Before opening a PR, all of the following must pass:
 
 ```bash
-uv run ruff check src/ tests/ examples/ scripts/
-uv run ruff format --check src/ tests/ examples/ scripts/
+uv run ruff check src/ tests/ plugins/ scripts/
+uv run ruff format --check src/ tests/ plugins/ scripts/
 uv run mypy src/
 uv run pytest tests/ -m "not integration" -v
 uv run pytest tests/ -m integration -v   # requires opensre installed
@@ -36,7 +36,7 @@ uv run pytest tests/ -m integration -v   # requires opensre installed
 
 - **Schema contract fixes** when OpenSRE investigation tool rules change upstream
 - **CLI improvements** (`init`, `validate`, `register`)
-- **Reference plugins** under `examples/` (prefer mock/offline tools for CI)
+- **Reference plugins** under `plugins/` (prefer mock/offline tools for CI)
 - **Docs** — README, `docs/DEMO.md`, upstream PR templates
 
 ## Plugin authoring

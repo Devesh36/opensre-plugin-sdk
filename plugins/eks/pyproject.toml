@@ -1,0 +1,23 @@
+[project]
+name = "opensre-plugin-eks"
+version = "0.1.0"
+description = "OpenSRE eks integration plugin (11 tool(s), bridged from core)"
+requires-python = ">=3.12"
+dependencies = [
+    "opensre-plugin-sdk",
+]
+
+[project.optional-dependencies]
+opensre = ["opensre>=0.1"]
+
+[tool.opensre-plugin]
+name = "eks"
+tools_package = "eks_plugin.tools"
+description = "Bridged eks tools for OpenSRE investigations"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["eks_plugin"]

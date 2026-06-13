@@ -1,0 +1,23 @@
+[project]
+name = "opensre-plugin-opensearch"
+version = "0.1.0"
+description = "OpenSRE opensearch integration plugin (1 tool(s), bridged from core)"
+requires-python = ">=3.12"
+dependencies = [
+    "opensre-plugin-sdk",
+]
+
+[project.optional-dependencies]
+opensre = ["opensre>=0.1"]
+
+[tool.opensre-plugin]
+name = "opensearch"
+tools_package = "opensearch_plugin.tools"
+description = "Bridged opensearch tools for OpenSRE investigations"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["opensearch_plugin"]

@@ -4,6 +4,17 @@ All notable changes to this project are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- Moved bundled integrations from `examples/` to `plugins/` (`linear`, `mock`)
+- Added **51 bridged integration plugins** ported from OpenSRE core (181 tools total)
+- Added `opensre_plugin.bridge` for transitional delegation to core tool implementations
+- Added `scripts/export_tool_inventory.py`, `scripts/generate_opensre_plugins.py`, `scripts/validate_all_plugins.py`
+- Added `plugins/opensre_plugins` meta package with `register_all()` for all 53 plugins
+- Added uv workspace members for every plugin package
+
 ## [0.1.0] - 2026-06-12
 
 ### Added

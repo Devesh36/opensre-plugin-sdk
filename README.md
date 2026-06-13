@@ -57,7 +57,7 @@ python -c "from linear_plugin import register; register()"
 opensre investigate --alert '{"title": "Payment API 500 errors"}'
 ```
 
-See [`examples/linear/`](examples/linear/) for a real API integration and [`examples/mock/`](examples/mock/) for an offline demo with no network. Proof transcript: [`docs/DEMO.md`](docs/DEMO.md).
+See [`plugins/linear/`](plugins/linear/) for a real API integration and [`plugins/mock/`](plugins/mock/) for an offline demo with no network. Register every installed plugin with [`plugins/opensre_plugins/`](plugins/opensre_plugins/). Proof transcript: [`docs/DEMO.md`](docs/DEMO.md).
 
 ## Documentation
 
@@ -87,6 +87,22 @@ description = "Linear issue search tools for OpenSRE investigations"
 | `opensre-plugin init <name>` | Scaffold a new tool plugin |
 | `opensre-plugin validate [path]` | Offline manifest + schema validation |
 | `opensre-plugin register [path]` | Register tools with OpenSRE (requires `opensre`) |
+
+## Bundled plugins (53 integrations, 181 tools)
+
+All integrations live under [`plugins/`](plugins/). See the [full plugin table](plugins/README.md#all-plugins-53).
+
+```bash
+uv pip install -e . -e plugins/opensre_plugins -e plugins/vercel -e plugins/sentry
+pip install opensre   # bridged plugins delegate to core at runtime
+python -c "from opensre_plugins import register_all; print(register_all(only=['vercel']))"
+```
+
+Validate everything offline:
+
+```bash
+uv run python scripts/validate_all_plugins.py
+```
 
 ## Development
 

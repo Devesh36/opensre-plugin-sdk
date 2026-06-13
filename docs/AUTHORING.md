@@ -149,6 +149,6 @@ Call before `opensre investigate` in the **same Python process** (or use `opensr
 
 ## References
 
-- [`examples/mock/`](../examples/mock/) — offline, `MOCK_API_KEY`
-- [`examples/linear/`](../examples/linear/) — HTTP, `LINEAR_API_KEY`
+- [`plugins/mock/`](../plugins/mock/) — offline, `MOCK_API_KEY`
+- [`plugins/linear/`](../plugins/linear/) — HTTP, `LINEAR_API_KEY`
 - [CloudOpsBench k8s tools](https://github.com/Tracer-Cloud/opensre/blob/main/tests/benchmarks/cloudopsbench/tools/k8s/__init__.py)

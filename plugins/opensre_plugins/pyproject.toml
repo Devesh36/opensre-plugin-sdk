@@ -1,0 +1,23 @@
+[project]
+name = "opensre-plugins"
+version = "0.1.0"
+description = "Meta package to register all bundled OpenSRE integration plugins"
+requires-python = ">=3.12"
+dependencies = [
+    "opensre-plugin-sdk",
+]
+
+[project.optional-dependencies]
+linear = ["opensre-plugin-linear"]
+mock = ["opensre-plugin-mock"]
+all = [
+    "opensre-plugin-linear",
+    "opensre-plugin-mock",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["opensre_plugins"]

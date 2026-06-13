@@ -98,8 +98,8 @@ See [PHASE1_VS_PHASE2.md](PHASE1_VS_PHASE2.md).
 
 | Example | Location | Use case |
 |---------|----------|----------|
-| Mock (offline) | `examples/mock/` | CI, learning, no API |
-| Linear (HTTP) | `examples/linear/` | Real vendor GraphQL |
+| Mock (offline) | `plugins/mock/` | CI, learning, no API |
+| Linear (HTTP) | `plugins/linear/` | Real vendor GraphQL |
 | CloudOpsBench | [opensre/tests/benchmarks/cloudopsbench](https://github.com/Tracer-Cloud/opensre/blob/main/tests/benchmarks/cloudopsbench/tools/k8s/__init__.py) | In-repo external package pattern |
 
 ## Related

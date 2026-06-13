@@ -1,0 +1,23 @@
+[project]
+name = "opensre-plugin-incident-io"
+version = "0.1.0"
+description = "OpenSRE incident_io integration plugin (1 tool(s), bridged from core)"
+requires-python = ">=3.12"
+dependencies = [
+    "opensre-plugin-sdk",
+]
+
+[project.optional-dependencies]
+opensre = ["opensre>=0.1"]
+
+[tool.opensre-plugin]
+name = "incident_io"
+tools_package = "incident_io_plugin.tools"
+description = "Bridged incident_io tools for OpenSRE investigations"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["incident_io_plugin"]

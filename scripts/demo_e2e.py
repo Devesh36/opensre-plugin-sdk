@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-LINEAR_ROOT = ROOT / "examples" / "linear"
+LINEAR_ROOT = ROOT / "plugins" / "linear"
 
 
 def main() -> int:
@@ -24,7 +24,7 @@ def main() -> int:
     from opensre_plugin.loader import register_tools
     from opensre_plugin.schema.validator import validate_all_tools_in_module
 
-    print("1/4  opensre-plugin validate examples/linear")
+    print("1/4  opensre-plugin validate plugins/linear")
     result = CliRunner().invoke(cli_main, ["validate", str(LINEAR_ROOT)])
     if result.exit_code != 0:
         print(result.output, file=sys.stderr)
